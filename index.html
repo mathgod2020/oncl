@@ -11,6 +11,7 @@
    <center>
    <li style='list-style:none; margin-top: 100px; width: 50%;'>
      <script>
+     try{
       var folded = false;
       function fold(){
        if(folded==false){
@@ -23,21 +24,25 @@
         folded = false;
        }
       }
-      var schools = [["안락중학교", [["7"], [], []], "anrak", "ms", "부산 동래구 온천천로 513"]];
+      var schools = [["안락중학교", [["7"], [], []], "anrak", "ms", "부산 동래구 온천천로 513"],["남일중학교", [[""], [], []], "namil", "ms", "이건 그냥 장식인데 헤헤"]];
       document.write(("학교 목록 ("+schools.length+")").bold().fontsize(3)+"&nbsp;&nbsp;<a onclick='fold()' id='foldbtn' class='foldbtn' style='color: black; text-decoration: none'>접기</a>");
       var i = 0;
       document.write("<div name='list' class='list' style='margin-top: 50px'>");
+      document.write("<p><input placeholder='학교 이름으로 검색' onclick='alert(\"기술력 딸려서 구현 못했습니다. 죄송합니다\")' class='inputs' style='outline: 0; border-style: solid; border-width: 0.1em; border-color: gray; width: 70%; height: 2em; border-radius: 5px; padding-left: 5px;'><input type='button' style='margin-left: 6px; height: 2.34em;' class='btn' value='Search' onclick='search()'></p>");
       while(i<schools.length){
-       document.write("<div style='text-align: left'>");
+       document.write("<div style='text-align: left; margin-top: 50px;'>");
        document.write("<h4 style='text-align: left;'>"+schools[i][0].fontsize(3)+"  "+schools[i][4].fontsize(1.8).italics().fontcolor("gray")+"</h4>");
-       document.write("<div><input class='"+i+"P' oninput='numberMaxLength(this);' style='text-align: center; width: 3em; height: 2.8em; border-radius: 3px; outline: 0; border-style: solid; border-width: 1px;'>"+" 학년 &nbsp&nbsp".fontsize(2.5).fontcolor("gray")+"<input  class='"+i+"N' style='text-align: center; width: 3em; height: 2.8em; border-radius: 3px; outline: 0; border-style: solid; border-width: 1px;' oninput='numberMaxLength(this);'>"+" 반".fontsize(2.5).fontcolor("gray")+"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type='button' onclick=\"c"+i+"($('."+i+"P').val(), $('."+i+"N').val())\" class='btn' value='GoTo' style='width:7em'></div>");
+       document.write("<div><input class='"+i+"P' oninput='numberMaxLength(this);' style='text-align: center; width: 3em; height: 2.8em; border-radius: 3px; outline: 0; border-style: solid; border-width: 1px;'>"+" 학년 &nbsp&nbsp".fontsize(2.5).fontcolor("gray")+"<input  class='"+i+"N' style='text-align: center; width: 3em; height: 2.8em; border-radius: 3px; outline: 0; border-style: solid; border-width: 1px;' oninput='numberMaxLength(this);'>"+" 반".fontsize(2.5).fontcolor("gray")+"<input type='button' onclick=\"c"+i+"($('."+i+"P').val(), $('."+i+"N').val())\" class='btn' value='GoTo' style='width:7em; margin-left: 2em;'></div>");
        document.write("</div>");
-       document.write("<script>function c"+i+"(x, y){if(schools["+i+"][1][(Number(x)-1)].indexOf(y)!=-1){window.open('/ms.anrak.'+x+'-'+y+'.html')}else{alert('해당 학급은 등록되어있지 않습니다')}}</scr"+"ipt>");
+       document.write("<script>function c"+i+"(x, y){try{if(schools["+i+"][1][(Number(x)-1)].indexOf(y)!=-1){window.open('/ms.anrak.'+x+'-'+y+'.html')}else{alert('해당 학급은 등록되어있지 않습니다')}}catch(e){alert('해당 학급은 등록되어있지 않습니다')}};</scr"+"ipt>");
        i++;
       }
       document.write("</div>");
       document.write("<script>function numberMaxLength(e){if(e.value.length > 2){e.value = e.value.slice(0, 2);}}</scri"+"pt/>");
-      document.write("<style type='text/css'>.btn{width: 5em; height: 2.8em; border-radius: 3px; outline: 0; border: 0; background: linear-gradient(120deg, rgb(0, 102, 255), blue); color: white} .btn:hover{cursor:pointer; background: rgb(0, 103, 255);}</style>");
+      document.write("<style type='text/css'>.btn{width: 5em; height: 2.8em; border-radius: 3px; outline: 0; border-style: solid; color: rgb(0, 103, 255); border-color: rgb(0, 103, 255); border-width: 0.11em; background: rgba(0,0,0,0); font-weight: bolder} .btn:hover{cursor:pointer; background: rgba(0, 103, 255); color: white} .btn2{width: 5em; height: 2.8em; border-radius: 3px; outline: 0; border-style: solid; color: rgb(255, 140, 26); border-color: rgb(255, 140, 26); border-width: 0.11em; background: rgba(0,0,0,0); font-weight: bolder} .btn2:hover{cursor:pointer; background: rgb(255, 140, 26); color: white}</style>");
+     }catch(e){
+      alert(e)
+     }
      </script>
      <style type='text/css'>
       .foldbtn:hover{
@@ -45,5 +50,6 @@
       }
      </style>
    </li>
+   <h6 style="margin-top: 200px; color: white;">안락중 1학년 7반만 있는건 안비밀(?)<p>(카톡주면 그반것도 넣어줌)</h6>
   </center>
  </body>
